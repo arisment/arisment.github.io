@@ -1,10 +1,15 @@
 body {
     background: url(/image/img_bg_sop_raw.png) no-repeat; 
-    background-size: cover;
+    <!--background-size: cover;-->
     <!-- background-color: #F2F2F2; -->
     font-family: 'Gubblebum BlacknBlocky';
     font-size: 1.25rem;
     line-height: 1.5;
+}
+
+@font-face {
+    font-family:Gubblebum BlacknBlocky;
+    src: url(/font/GUBBLABLO.ttf);
 }
 
 .page-nav {
@@ -67,7 +72,7 @@ body {
     margin-top: 0;
   }
 
-.post-title {
+post-title {
     font-size: 1.5em;
     font-family: 'Gubblebum BlacknBlocky';
     .post-title-link {
@@ -76,12 +81,12 @@ body {
     }
   }
 
-  .post-content {
+.post.post-content {
     a
 {
     color: #368CCB;
     text-decoration: none;
-    font-family: 'Gubblebum BlacknBlocky';
+    font-family:'Microsoft YaHei UI';
 }
   }
 
@@ -119,7 +124,21 @@ body {
   }
 }
 
-.highlight {
+.article-entry .highlight table {
+    margin: 0;
+    width: auto;
+}
+
+pre {
+  word-break: break-all;
+  word-wrap: break-word;  
+}
+
+pre {
+  overflow:auto; 
+}
+
+.article-entry pre, .article-entry .highlight {
     background: #2d2d2d;
     margin: 0 -20px;
     padding: 15px 20px;
@@ -129,9 +148,4 @@ body {
     overflow: auto;
     color: #ccc;
     line-height: 22.400000000000002px;
-}
-
-.article-entry .highlight table {
-    margin: 0;
-    width: auto;
 }

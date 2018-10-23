@@ -1,12 +1,15 @@
 <!DOCTYPE html>
 <html>
-  <head>
+  <body>
+
+    <head>
   <meta http-equiv="content-type" content="text/html; charset=utf-8">
   <meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" name="viewport">
   <title></title>
   <link rel="stylesheet" href="/css/style.css">
+  <link rel="stylesheet" href="/css/sons-of-obsidian.css" media="screen" type="text/css">
 </head>
-  <body>
+
     <header class="header">
   <div class="blog-title">
     <a href="/" class="logo"></a>
@@ -28,6 +31,11 @@
     <main class="main">
       <section class="archive">
   <ul class="post-archive">
+    
+      <li class="post-item">
+        <span class="post-date">2018-10-23</span>
+        <a class="post-title" href="/2018/10/23/decoy/">decoy</a>
+      </li>
     
       <li class="post-item">
         <span class="post-date">2018-09-13</span>
@@ -58,5 +66,13 @@
 </section>
 
     </main>
+	<script type="text/javascript" src="/js/jquery.js"></script>
+	<script type="text/javascript" src="/js/google-code-prettify/prettify.js"></script>
+    <script type="text/javascript">
+    $(window).load(function(){
+       $('pre').addClass('prettyprint linenums');
+       prettyPrint();
+     })    
+    </script>
   </body>
 </html>
