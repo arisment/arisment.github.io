@@ -7,9 +7,21 @@ body {
     line-height: 1.5;
 }
 
+@font-face{
+	font-family:DejaVu Sans;
+	src:url(/font/DejaVuSansMono_0.ttf);
+}
+
 @font-face {
     font-family:Gubblebum BlacknBlocky;
     src: url(/font/GUBBLABLO.ttf);
+}
+
+.raw{
+	font-family: "DejaVu Sans", "Trebuchet MS", Verdana, "sans-serif";
+	font-size: 10px;
+	line-height: 0px;
+	letter-spacing: 0px;
 }
 
 .page-nav {
