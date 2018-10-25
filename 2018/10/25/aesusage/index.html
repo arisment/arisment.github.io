@@ -37,7 +37,7 @@
     <span class="post-time">2018-10-25</span>
   </div>
   <div class="post-content">
-    <body><br><h2>aes usage in crypto-js</h2><br><h3>note: <br><br>key in 8/16/32 </h3><br><pre><code><br>var key = “xxxxxxxxxxxxxxxx”<br>var message = “message”;<br><br>var en = CryptoJS.AES.encrypt(message, CryptoJS.enc.Utf8.parse(key), {<br>    mode: CryptoJS.mode.ECB,<br>    padding: CryptoJS.pad.Pkcs7<br>});<br>console.log(“value: “+encrypt);<br><br>var de = CryptoJS.AES.decrypt(encrypt, CryptoJS.enc.Utf8.parse(key), {<br>    mode: CryptoJS.mode.ECB,<br>    padding: CryptoJS.pad.Pkcs7<br>});<br>console.log(“value: “+decrypt.toString(CryptoJS.enc.Utf8));<br></code></pre><br><br></body>
+    <body><br><h2>aes usage in crypto-js</h2><br><h3>note: <br><br>key in 8/16/32 </h3><br><pre><code class="raw"><br>var key = “xxxxxxxxxxxxxxxx”<br>var message = “message”;<br><br>var en = CryptoJS.AES.encrypt(message, CryptoJS.enc.Utf8.parse(key), {<br>    mode: CryptoJS.mode.ECB,<br>    padding: CryptoJS.pad.Pkcs7<br>});<br>console.log(“value: “+encrypt);<br><br>var de = CryptoJS.AES.decrypt(encrypt, CryptoJS.enc.Utf8.parse(key), {<br>    mode: CryptoJS.mode.ECB,<br>    padding: CryptoJS.pad.Pkcs7<br>});<br>console.log(“value: “+decrypt.toString(CryptoJS.enc.Utf8));<br></code></pre><br><br></body>
   </div>
 </article>
     </main>
