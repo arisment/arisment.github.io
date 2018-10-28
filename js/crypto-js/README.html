@@ -1,0 +1,162 @@
+<h1 id="crypto-js"><a href="#crypto-js" class="headerlink" title="crypto-js "></a>crypto-js <a href="https://travis-ci.org/brix/crypto-js"><img src="https://travis-ci.org/brix/crypto-js.svg?branch=develop" alt="Build Status"></a></h1><p>JavaScript library of crypto standards.</p>
+<h2 id="Node-js-Install"><a href="#Node-js-Install" class="headerlink" title="Node.js (Install)"></a>Node.js (Install)</h2><p>Requirements:</p>
+<ul>
+<li>Node.js</li>
+<li>npm (Node.js package manager)</li>
+</ul>
+<pre><code class="bash">npm install crypto-js
+</code></pre>
+<h3 id="Usage"><a href="#Usage" class="headerlink" title="Usage"></a>Usage</h3><p>ES6 import for typical API call signing use case:</p>
+<pre><code class="javascript"><span class="keyword">import</span> sha256 <span class="keyword">from</span> <span class="string">'crypto-js/sha256'</span>;
+<span class="keyword">import</span> hmacSHA512 <span class="keyword">from</span> <span class="string">'crypto-js/hmac-sha512'</span>;
+<span class="keyword">import</span> Base64 <span class="keyword">from</span> <span class="string">'crypto-js/enc-base64'</span>;
+
+<span class="keyword">const</span> message, nonce, path, privateKey; <span class="comment">// ...</span>
+<span class="keyword">const</span> hashDigest = sha256(nonce + message);
+<span class="keyword">const</span> hmacDigest = Base64.stringify(hmacSHA512(path + hashDigest, privateKey));
+</code></pre>
+<p>Modular include:</p>
+<pre><code class="javascript"><span class="keyword">var</span> AES = <span class="built_in">require</span>(<span class="string">"crypto-js/aes"</span>);
+<span class="keyword">var</span> SHA256 = <span class="built_in">require</span>(<span class="string">"crypto-js/sha256"</span>);
+...
+<span class="built_in">console</span>.log(SHA256(<span class="string">"Message"</span>));
+</code></pre>
+<p>Including all libraries, for access to extra methods:</p>
+<pre><code class="javascript"><span class="keyword">var</span> CryptoJS = <span class="built_in">require</span>(<span class="string">"crypto-js"</span>);
+<span class="built_in">console</span>.log(CryptoJS.HmacSHA1(<span class="string">"Message"</span>, <span class="string">"Key"</span>));
+</code></pre>
+<h2 id="Client-browser"><a href="#Client-browser" class="headerlink" title="Client (browser)"></a>Client (browser)</h2><p>Requirements:</p>
+<ul>
+<li>Node.js</li>
+<li>Bower (package manager for frontend)</li>
+</ul>
+<pre><code class="bash">bower install crypto-js
+</code></pre>
+<h3 id="Usage-1"><a href="#Usage-1" class="headerlink" title="Usage"></a>Usage</h3><p>Modular include:</p>
+<pre><code class="javascript"><span class="built_in">require</span>.config({
+    packages: [
+        {
+            name: <span class="string">'crypto-js'</span>,
+            location: <span class="string">'path-to/bower_components/crypto-js'</span>,
+            main: <span class="string">'index'</span>
+        }
+    ]
+});
+
+<span class="built_in">require</span>([<span class="string">"crypto-js/aes"</span>, <span class="string">"crypto-js/sha256"</span>], <span class="function"><span class="keyword">function</span> (<span class="params">AES, SHA256</span>) </span>{
+    <span class="built_in">console</span>.log(SHA256(<span class="string">"Message"</span>));
+});
+</code></pre>
+<p>Including all libraries, for access to extra methods:</p>
+<pre><code class="javascript"><span class="comment">// Above-mentioned will work or use this simple form</span>
+<span class="built_in">require</span>.config({
+    paths: {
+        <span class="string">'crypto-js'</span>: <span class="string">'path-to/bower_components/crypto-js/crypto-js'</span>
+    }
+});
+
+<span class="built_in">require</span>([<span class="string">"crypto-js"</span>], <span class="function"><span class="keyword">function</span> (<span class="params">CryptoJS</span>) </span>{
+    <span class="built_in">console</span>.log(CryptoJS.HmacSHA1(<span class="string">"Message"</span>, <span class="string">"Key"</span>));
+});
+</code></pre>
+<h3 id="Usage-without-RequireJS"><a href="#Usage-without-RequireJS" class="headerlink" title="Usage without RequireJS"></a>Usage without RequireJS</h3><pre><code class="html"><span class="tag">&lt;<span class="name">script</span> <span class="attr">type</span>=<span class="string">"text/javascript"</span> <span class="attr">src</span>=<span class="string">"path-to/bower_components/crypto-js/crypto-js.js"</span>&gt;</span><span class="undefined"></span><span class="tag">&lt;/<span class="name">script</span>&gt;</span>
+<span class="tag">&lt;<span class="name">script</span> <span class="attr">type</span>=<span class="string">"text/javascript"</span>&gt;</span><span class="undefined"></span>
+<span class="javascript">    <span class="keyword">var</span> encrypted = CryptoJS.AES(...);</span>
+<span class="javascript">    <span class="keyword">var</span> encrypted = CryptoJS.SHA256(...);</span>
+<span class="undefined"></span><span class="tag">&lt;/<span class="name">script</span>&gt;</span>
+</code></pre>
+<h2 id="API"><a href="#API" class="headerlink" title="API"></a>API</h2><p>See: <a href="https://code.google.com/p/crypto-js">https://code.google.com/p/crypto-js</a></p>
+<h3 id="AES-Encryption"><a href="#AES-Encryption" class="headerlink" title="AES Encryption"></a>AES Encryption</h3><h4 id="Plain-text-encryption"><a href="#Plain-text-encryption" class="headerlink" title="Plain text encryption"></a>Plain text encryption</h4><pre><code class="javascript"><span class="keyword">var</span> CryptoJS = <span class="built_in">require</span>(<span class="string">"crypto-js"</span>);
+
+<span class="comment">// Encrypt</span>
+<span class="keyword">var</span> ciphertext = CryptoJS.AES.encrypt(<span class="string">'my message'</span>, <span class="string">'secret key 123'</span>).toString();
+
+<span class="comment">// Decrypt</span>
+<span class="keyword">var</span> bytes  = CryptoJS.AES.decrypt(ciphertext, <span class="string">'secret key 123'</span>);
+<span class="keyword">var</span> originalText = bytes.toString(CryptoJS.enc.Utf8);
+
+<span class="built_in">console</span>.log(originalText); <span class="comment">// 'my message'</span>
+</code></pre>
+<h4 id="Object-encryption"><a href="#Object-encryption" class="headerlink" title="Object encryption"></a>Object encryption</h4><pre><code class="javascript"><span class="keyword">var</span> CryptoJS = <span class="built_in">require</span>(<span class="string">"crypto-js"</span>);
+
+<span class="keyword">var</span> data = [{<span class="attr">id</span>: <span class="number">1</span>}, {<span class="attr">id</span>: <span class="number">2</span>}]
+
+<span class="comment">// Encrypt</span>
+<span class="keyword">var</span> ciphertext = CryptoJS.AES.encrypt(<span class="built_in">JSON</span>.stringify(data), <span class="string">'secret key 123'</span>).toString();
+
+<span class="comment">// Decrypt</span>
+<span class="keyword">var</span> bytes  = CryptoJS.AES.decrypt(ciphertext, <span class="string">'secret key 123'</span>);
+<span class="keyword">var</span> decryptedData = <span class="built_in">JSON</span>.parse(bytes.toString(CryptoJS.enc.Utf8));
+
+<span class="built_in">console</span>.log(decryptedData); <span class="comment">// [{id: 1}, {id: 2}]</span>
+</code></pre>
+<h3 id="List-of-modules"><a href="#List-of-modules" class="headerlink" title="List of modules"></a>List of modules</h3><ul>
+<li><code>crypto-js/core</code></li>
+<li><code>crypto-js/x64-core</code></li>
+<li><code>crypto-js/lib-typedarrays</code></li>
+</ul>
+<hr>
+<ul>
+<li><code>crypto-js/md5</code></li>
+<li><code>crypto-js/sha1</code></li>
+<li><code>crypto-js/sha256</code></li>
+<li><code>crypto-js/sha224</code></li>
+<li><code>crypto-js/sha512</code></li>
+<li><code>crypto-js/sha384</code></li>
+<li><code>crypto-js/sha3</code></li>
+<li><code>crypto-js/ripemd160</code></li>
+</ul>
+<hr>
+<ul>
+<li><code>crypto-js/hmac-md5</code></li>
+<li><code>crypto-js/hmac-sha1</code></li>
+<li><code>crypto-js/hmac-sha256</code></li>
+<li><code>crypto-js/hmac-sha224</code></li>
+<li><code>crypto-js/hmac-sha512</code></li>
+<li><code>crypto-js/hmac-sha384</code></li>
+<li><code>crypto-js/hmac-sha3</code></li>
+<li><code>crypto-js/hmac-ripemd160</code></li>
+</ul>
+<hr>
+<ul>
+<li><code>crypto-js/pbkdf2</code></li>
+</ul>
+<hr>
+<ul>
+<li><code>crypto-js/aes</code></li>
+<li><code>crypto-js/tripledes</code></li>
+<li><code>crypto-js/rc4</code></li>
+<li><code>crypto-js/rabbit</code></li>
+<li><code>crypto-js/rabbit-legacy</code></li>
+<li><code>crypto-js/evpkdf</code></li>
+</ul>
+<hr>
+<ul>
+<li><code>crypto-js/format-openssl</code></li>
+<li><code>crypto-js/format-hex</code></li>
+</ul>
+<hr>
+<ul>
+<li><code>crypto-js/enc-latin1</code></li>
+<li><code>crypto-js/enc-utf8</code></li>
+<li><code>crypto-js/enc-hex</code></li>
+<li><code>crypto-js/enc-utf16</code></li>
+<li><code>crypto-js/enc-base64</code></li>
+</ul>
+<hr>
+<ul>
+<li><code>crypto-js/mode-cfb</code></li>
+<li><code>crypto-js/mode-ctr</code></li>
+<li><code>crypto-js/mode-ctr-gladman</code></li>
+<li><code>crypto-js/mode-ofb</code></li>
+<li><code>crypto-js/mode-ecb</code></li>
+</ul>
+<hr>
+<ul>
+<li><code>crypto-js/pad-pkcs7</code></li>
+<li><code>crypto-js/pad-ansix923</code></li>
+<li><code>crypto-js/pad-iso10126</code></li>
+<li><code>crypto-js/pad-iso97971</code></li>
+<li><code>crypto-js/pad-zeropadding</code></li>
+<li><code>crypto-js/pad-nopadding</code></li>
+</ul>
